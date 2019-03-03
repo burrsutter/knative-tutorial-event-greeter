@@ -18,13 +18,13 @@ public class EventGreeterController {
 
     private final SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
 
-    private static final String RESPONSE_STRING_FORMAT = "Event greeter => '%s' : %d \n";
+    private static final String RESPONSE_STRING_FORMAT = "Burr => '%s' : %d \n";
 
     private static final String HOSTNAME =
             parseContainerIdFromHostname(System.getenv().getOrDefault("HOSTNAME", "unknown"));
 
     static String parseContainerIdFromHostname(String hostname) {
-        return hostname.replaceAll("greeter-v\\d+-", "");
+        return hostname.replaceAll("event-greeter-v\\d+-", "");
     }
 
 
