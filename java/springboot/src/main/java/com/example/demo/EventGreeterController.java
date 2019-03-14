@@ -18,7 +18,7 @@ public class EventGreeterController {
 
     private final SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
 
-    private static final String RESPONSE_STRING_FORMAT = "Burr => '%s' : %d \n";
+    private static final String RESPONSE_STRING_FORMAT = "BurrX => '%s' : %d \n";
 
     private static final String HOSTNAME =
             parseContainerIdFromHostname(System.getenv().getOrDefault("HOSTNAME", "unknown"));
