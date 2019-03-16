@@ -18,7 +18,7 @@ public class EventGreeterController {
 
     private final SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
 
-    private static final String RESPONSE_STRING_FORMAT = "Burr10 => '%s' : %d \n";
+    private static final String RESPONSE_STRING_FORMAT = "Burr11 => '%s' : %d \n";
 
     private static final String HOSTNAME =
             parseContainerIdFromHostname(System.getenv().getOrDefault("HOSTNAME", "unknown"));
@@ -36,11 +36,12 @@ public class EventGreeterController {
     @PostMapping("/")
     public @ResponseBody  String greet(@RequestBody String cloudEventJson) {
         count++;
+        LOGGER.info("Event Message Returning \n {}",cloudEventJson);
         String greeterHost = String.format(RESPONSE_STRING_FORMAT, HOSTNAME, count);
         JsonObject response = new JsonObject(cloudEventJson)
                 .put("host",greeterHost.replace("\n",""))
                 .put("time",SDF.format(new Date()));
-        LOGGER.info("Event Message Received \n {}",response.encodePrettily());
+        LOGGER.info("Event Message Returning \n {}",response.encodePrettily());
         return response.encode();
     }
 
